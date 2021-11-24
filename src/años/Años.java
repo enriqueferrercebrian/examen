@@ -23,7 +23,8 @@ public class Años {
         final int XIX = 1900, XX = 2000, XXI = 2100;
         boolean ordenCorrecto = false;
         List<Integer> años = new ArrayList<>();
-        int añoFinalInt, añoIniciolInt, i = 0, edad;
+        List<Integer> arrayXX = new ArrayList<>();
+        int añoFinalInt, añoIniciolInt, i = 0, edad, contadorXX=0;
 
         while (!ordenCorrecto) {
 
@@ -56,8 +57,9 @@ public class Años {
 
             if (Integer.parseInt(añoInicio) > Integer.parseInt(añoFinal)) {
                 System.out.println("Porfavor, escriba un año final posterios al año de inicio");
-            } else if (Integer.parseInt(añoInicio) >= XIX && Integer.parseInt(añoInicio) >= XX && Integer.parseInt(añoInicio) <= XXI
-                    && Integer.parseInt(añoFinal) >= XIX && Integer.parseInt(añoFinal) >= XX && Integer.parseInt(añoFinal) <= XXI) {
+
+            } else if (Integer.parseInt(añoInicio) >= XIX && Integer.parseInt(añoInicio) <= XXI
+                    && Integer.parseInt(añoFinal) >= XIX && Integer.parseInt(añoFinal) <= XXI) {
 
                 ordenCorrecto = true;
             } else {
@@ -70,14 +72,35 @@ public class Años {
         edad = añoFinalInt - añoIniciolInt;
         int x = 0;
         for (i = añoIniciolInt; i <= añoFinalInt; i++) {
-            
-            System.out.println("nacido en " + (añoFinalInt - x) + " Tiene "+ edad);
+            int tmpaño = (añoFinalInt - x);
+            System.out.println("nacido en " + tmpaño + " Tiene " + (añoFinalInt - tmpaño));
             x++;
-                    
-        }
-
+            años.add(tmpaño);
 
         }
+        
+        
+        for ( int y : años){
+            
+            if (y <= XX && y> XIX ){
+                
+                
+                
+                arrayXX.add(y);
+                
+                    contadorXX++;
+                
+            }
+            
+        }
+        System.out.println("Estos años pertenecen a XX : (" + contadorXX + ")");
+            for ( int z : arrayXX){
+                
+                System.out.println(z);
+                
+            }
+        
+        
+
     }
-
-
+}
