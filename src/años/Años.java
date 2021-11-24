@@ -24,35 +24,45 @@ public class Años {
         boolean ordenCorrecto = false;
         List<Integer> años = new ArrayList<>();
         List<Integer> arrayXX = new ArrayList<>();
-        int añoFinalInt, añoIniciolInt, i = 0, edad, contadorXX=0;
+        int añoFinalInt, añoIniciolInt, i = 0, edad, contadorXX = 0;
 
         while (!ordenCorrecto) {
 
             System.out.println("Dime año Inicio: ");
             correcto = false;
             while (!correcto) {
+                try {
 
-                añoInicio = sc.nextLine();
+                    añoInicio = sc.nextLine();
+                    añoIniciolInt = Integer.parseInt(añoInicio);
 
-                if (!añoInicio.matches("^[0-9]{4}$")) {
-                    System.out.println("porfavor, ponga un año correcto.");
-                } else {
-                    correcto = true;
+                    if (!añoInicio.matches("^[0-9]{4}$")) {
+                        System.out.println("porfavor, ponga un año correcto.");
+                    } else {
+                        correcto = true;
+                    }
+
+                    correcto = false;
+                    System.out.println("Dime año Final: ");
+
+                    while (!correcto) {
+
+                        añoFinal = sc.nextLine();
+
+                        añoFinalInt = Integer.parseInt(añoFinal);
+
+                        if (!añoFinal.matches("^[0-9]{4}$")) {
+                            System.out.println("porfavor, ponga un año correcto.");
+                        } else {
+                            correcto = true;
+                        }
+                    }
+                } catch (NumberFormatException exception) {
+                    System.out.println("holimanoli");
+                    System.out.println("Dime año Inicio: ");
+
                 }
-            }
 
-            correcto = false;
-            System.out.println("Dime año Final: ");
-
-            while (!correcto) {
-
-                añoFinal = sc.nextLine();
-
-                if (!añoFinal.matches("^[0-9]{4}$")) {
-                    System.out.println("porfavor, ponga un año correcto.");
-                } else {
-                    correcto = true;
-                }
             }
 
             if (Integer.parseInt(añoInicio) > Integer.parseInt(añoFinal)) {
@@ -79,28 +89,24 @@ public class Años {
 
         }
         
-        
-        for ( int y : años){
-            
-            if (y <= XX && y> XIX ){
-                
-                
-                
+
+        for (int y : años) {
+
+            if (y < XX && y > XIX) {
+
                 arrayXX.add(y);
-                
-                    contadorXX++;
-                
+
+                contadorXX++;
+
             }
-            
+
         }
         System.out.println("Estos años pertenecen a XX : (" + contadorXX + ")");
-            for ( int z : arrayXX){
-                
-                System.out.println(z);
-                
-            }
-        
-        
+        for (int z : arrayXX) {
+
+            System.out.println(z);
+
+        }
 
     }
 }
